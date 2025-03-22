@@ -1,28 +1,28 @@
-// Оголоси функцію formatMessage(message, maxLength), яка приймає рядок (параметр message) та перевіряє його довжину відповідно до заданої максимальної довжини (параметр maxLength).
-
-// Доповни код функції таким чином, що:
-
-// Якщо довжина рядка дорівнює або менша за maxLength, то функція повертає початковий рядок без змін.
-// Якщо довжина перевищує maxLength, то функція обрізає рядок до maxLength символів, додає трикрапку "..." в кінці та повертає обрізану версію.
+// Задача 3. Фільтрація масиву чисел
 
 
-function formatMessage(message, maxLength) {
+// Напиши функцію filterArray(numbers, value), яка приймає масив чисел (numbers) та значення (value) як параметри. Функція повинна повертати новий масив лише тих чисел із масиву numbers, які більші за значення value.
 
-   const messageLength = message.length;
-   const copyPartOfMessage = message.slice(0, maxLength);
+// Усередині функції:
 
+// Створи порожній масив, у який будеш додавати підходящі числа.
+// Використай цикл для ітерації кожного елемента масиву numbers.
+// Використовуй умовний оператор if усередині циклу для перевірки кожного елемента и додавання до свого масиву.
+// Поверни свій новий масив з підходящими числами як результат.
 
-    if (messageLength <= maxLength) {
-        return message;
-    } else if (messageLength > maxLength) {
-        return `${copyPartOfMessage}...`;
+function filterArray(numbers, value) {
+    let okNumbers = [];
+    for (let number of numbers) {
+      if (number > value) {
+        okNumbers.push(number);
+      }
     }
-}
+    return okNumbers;
+  }
 
 
-console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
-console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
-console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
-console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
